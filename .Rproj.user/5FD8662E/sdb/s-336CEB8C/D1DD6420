@@ -1,12 +1,12 @@
 {
-    "contents" : "# bpa: Basic Pattern Analysis\n",
+    "contents" : "# bpa: Basic Pattern Analysis in R\n",
     "created" : 1452566588697.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2243101361",
+    "hash" : "2040074497",
     "id" : "D1DD6420",
-    "lastKnownWriteTime" : 1452566650,
+    "lastKnownWriteTime" : 1452566726,
     "path" : "~/Desktop/Dropbox/devel/bpa/README.md",
     "project_path" : "README.md",
     "properties" : {

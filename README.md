@@ -1,1 +1,1 @@
-# bpa: Basic Pattern Analysis
+# bpa: Basic Pattern Analysis in R
