@@ -12,6 +12,39 @@ Bug reports should be submitted to https://github.com/bgreenwell/bpa/issues.
 
 ## Basic usage
 
+The most basic function is `get_pattern`, which is not exported so one must use `bpa:::get_pattern`. This function is used internally to extract patterns from a vector of data. For example, consider a vector of dates:
+```{r}
+dates <- seq(as.Date("1910/1/1"), as.Date("1915/1/1"), "years")
+print(dates)
+
+## [1] "1910-01-01" "1911-01-01" "1912-01-01" "1913-01-01" "1914-01-01"
+## [6] "1915-01-01"
+```
+We can easily xtract the unique patterns:
+```{r}
+patterns <- bpa:::get_pattern(dates)
+unique(patterns)
+
+## [1] "9999-99-99"
+```
+However, suppose the dates are entered in multiple formats (perhaps the data arose from the merger of two data bases):
+```{r}
+dates[3] <- "01/01/1912"
+dates[5] <- "01/01/1914"
+print(dates)
+
+## [1] "1910-01-01" "1911-01-01" "1-01-19"    "1913-01-01" "1-01-19"   
+## [6] "1915-01-01"
+```
+We can easily detect such problems:
+```{r}
+patterns <- bpa:::get_pattern(dates)
+unique(patterns)
+
+## [1] "9999-99-99" "9-99-99"
+```
+
+The function `basic_pattern_analysis` applies this function to each column of a data frame and, by default, returns a `"dataframe"` object. This function is especially useful when working with voluminous, messy, and unfamiliar data sets. The following code exemplifies this.
 ```{r}
 # Load package
 library(bpa)
