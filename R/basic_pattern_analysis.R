@@ -58,3 +58,10 @@ basic_pattern_analysis.data.frame <- function(x, unique_only = FALSE,
     data.frame(z)
   }
 }
+
+
+#' @rdname bpa
+#' @export
+bpa <- function(x, ...){
+  basic_pattern_analysis(x, ...)
+} 
