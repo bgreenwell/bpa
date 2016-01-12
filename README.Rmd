@@ -29,8 +29,8 @@ unique(patterns)  # only display the unique patterns
 ```
 All dates appear to have the same format. However, suppose the dates are entered in multiple formats (perhaps the data arose from the merger of two data bases, each using a different date format):
 ```{r}
-dates[3] <- "01/01/1912"
-dates[5] <- "01/01/1914"
+dates[3] <- "01/01/1912"  # change the third date format
+dates[5] <- "01/01/1914"  # change the fifth date format
 print(dates)
 
 ## [1] "1910-01-01" "1911-01-01" "1-01-19"    "1913-01-01" "1-01-19"   
