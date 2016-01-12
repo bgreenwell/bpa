@@ -1,0 +1,16 @@
+# bpa: Basic Pattern Analysis in R
+
+## Example: iris data
+
+```{r}
+# Load package
+library(bpa)
+
+# Look at patterns of first six observations (returns a data frame by default)
+iris %>%
+  head %>%
+  basic_pattern_analysis
+
+# All unique patterns (returns a list)
+basic_pattern_analysis(iris, unique_only = TRUE)
+```
