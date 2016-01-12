@@ -20,7 +20,7 @@ print(dates)
 ## [1] "1910-01-01" "1911-01-01" "1912-01-01" "1913-01-01" "1914-01-01"
 ## [6] "1915-01-01"
 ```
-We can easily xtract the unique patterns:
+We can easily extract the unique patterns:
 ```{r}
 patterns <- bpa:::get_pattern(dates)
 unique(patterns)
