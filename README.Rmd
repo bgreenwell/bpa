@@ -23,7 +23,7 @@ print(dates)
 We can easily extract the unique patterns:
 ```{r}
 patterns <- bpa:::get_pattern(dates)
-unique(patterns)
+unique(patterns)  # only display the unique patterns
 
 ## [1] "9999-99-99"
 ```
@@ -39,7 +39,7 @@ print(dates)
 We can easily detect such problems:
 ```{r}
 patterns <- bpa:::get_pattern(dates)
-unique(patterns)
+unique(patterns)  # only display the unique patterns
 
 ## [1] "9999-99-99" "9-99-99"
 ```
