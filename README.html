@@ -80,7 +80,7 @@ print(dates)</code></pre>
 ## [6] &quot;1915-01-01&quot;</code></pre>
 <pre class="r"><code>## [1] &quot;1910-01-01&quot; &quot;1911-01-01&quot; &quot;1912-01-01&quot; &quot;1913-01-01&quot; &quot;1914-01-01&quot;
 ## [6] &quot;1915-01-01&quot;</code></pre>
-<p>We can easily xtract the unique patterns:</p>
+<p>We can easily extract the unique patterns:</p>
 <pre class="r"><code>patterns &lt;- bpa:::get_pattern(dates)
 unique(patterns)</code></pre>
 <pre><code>## [1] &quot;9999-99-99&quot;</code></pre>
@@ -98,6 +98,8 @@ print(dates)</code></pre>
 unique(patterns)</code></pre>
 <pre><code>## [1] &quot;9999-99-99&quot; &quot;9-99-99&quot;</code></pre>
 <pre class="r"><code>## [1] &quot;9999-99-99&quot; &quot;9-99-99&quot;</code></pre>
+<p>Notice that all the digits are represented by the character <code>9</code>. Similarly, all lowercase/uppercase letters are represented by the character <code>a</code>/<code>A</code>. Everything else (e.g. @, #, &amp;, etc.) remain the same. The only exception is whitespace characters which are represented as <code>w</code> if <code>show_whitespace = TRUE</code>.</p>
+<p>The function <code>basic_pattern_analysis</code> applies this function to each column of a data frame and, by default, returns a <code>&quot;dataframe&quot;</code> object. This function is especially useful when working with voluminous, messy, and unfamiliar data sets. The following code exemplifies this.</p>
 <pre class="r"><code># Load package
 library(bpa)
 

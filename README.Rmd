@@ -43,7 +43,9 @@ unique(patterns)
 
 ## [1] "9999-99-99" "9-99-99"
 ```
-
+Notice that all the digits are represented by the character `9`. Similarly, all lowercase/uppercase letters are represented by the character `a`/`A`. Everything else (e.g. -, @, #, etc.)
+ remain the same. The only exception is whitespace characters which are represented as `w` if `show_whitespace = TRUE`.
+ 
 The function `basic_pattern_analysis` applies this function to each column of a data frame and, by default, returns a `"dataframe"` object. This function is especially useful when working with voluminous, messy, and unfamiliar data sets. The following code exemplifies this.
 ```{r}
 # Load package
