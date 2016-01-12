@@ -1,6 +1,16 @@
 # bpa: Basic Pattern Analysis in R
 
-## Example: iris data
+Package `bpa`, through the function `basic_pattern_analysis`, allows the analyst to easily identify weird or unexpected data points. For example, multiple date formats or other typos.
+
+## Installation
+Package `bpa` is not currently available from CRAN, but the development version is hosted on GitHub at https://github.com/bgreenwell/bpa and can be downloaded using [`devtools`](https://github.com/hadley/devtools):
+```r
+# Assuming devtools is already installed
+devtools::install_github("bgreenwell/bpa")
+```
+Bug reports should be submitted to https://github.com/bgreenwell/bpa/issues.
+
+## Basic usage
 
 ```{r}
 # Load package

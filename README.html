@@ -63,8 +63,16 @@ img {
 
 <div id="bpa-basic-pattern-analysis-in-r" class="section level1">
 <h1>bpa: Basic Pattern Analysis in R</h1>
-<div id="example-iris-data" class="section level2">
-<h2>Example: iris data</h2>
+<p>Package <code>bpa</code>, through the function <code>basic_pattern_analysis</code>, allows the analyst to easily identify weird or unexpected data points. For example, multiple date formats or other typos.</p>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>Package <code>bpa</code> is not currently available from CRAN, but the development version is hosted on GitHub at <a href="https://github.com/bgreenwell/bpa" class="uri">https://github.com/bgreenwell/bpa</a> and can be downloaded using <a href="https://github.com/hadley/devtools"><code>devtools</code></a>:</p>
+<pre class="r"><code># Assuming devtools is already installed
+devtools::install_github(&quot;bgreenwell/bpa&quot;)</code></pre>
+<p>Bug reports should be submitted to <a href="https://github.com/bgreenwell/bpa/issues" class="uri">https://github.com/bgreenwell/bpa/issues</a>.</p>
+</div>
+<div id="basic-usage" class="section level2">
+<h2>Basic usage</h2>
 <pre class="r"><code># Load package
 library(bpa)
 
