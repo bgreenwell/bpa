@@ -17,8 +17,10 @@ get_pattern <- function(x, show_whitespace = TRUE) {
 #' Perform a basic pattern analysis
 #'
 #' @param x A data frame or character vector.
-#' @param unique_only Logical indicating wether or not to only show the unique
+#' @param unique_only Logical indicating whether or not to only show the unique
 #'   patterns. Default is \code{TRUE}.
+#' @param show_whitespace Logical indicating whether or not to show whitespace
+#'   as a \code{"w"} character. Default is \code{TRUE}.
 #' @param ... Additional optional arguments to be passed onto \code{llply}.
 #' @rdname bpa
 #' @export
