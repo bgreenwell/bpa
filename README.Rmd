@@ -27,7 +27,7 @@ unique(patterns)  # only display the unique patterns
 
 ## [1] "9999-99-99"
 ```
-All dates appear to have the same format. However, suppose the dates are entered in multiple formats (perhaps the data arose from the merger of two data bases):
+All dates appear to have the same format. However, suppose the dates are entered in multiple formats (perhaps the data arose from the merger of two data bases, each using a different date format):
 ```{r}
 dates[3] <- "01/01/1912"
 dates[5] <- "01/01/1914"
