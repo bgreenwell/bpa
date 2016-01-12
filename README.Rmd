@@ -11,6 +11,39 @@ iris %>%
   head %>%
   basic_pattern_analysis
 
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          9.9         9.9          9.9         9.9  aaaaaa
+## 2          9.9           9          9.9         9.9  aaaaaa
+## 3          9.9         9.9          9.9         9.9  aaaaaa
+## 4          9.9         9.9          9.9         9.9  aaaaaa
+## 5            9         9.9          9.9         9.9  aaaaaa
+## 6          9.9         9.9          9.9         9.9  aaaaaa
+
 # All unique patterns (returns a list)
 basic_pattern_analysis(iris, unique_only = TRUE)
+
+## $Sepal.Length
+## 
+##   9 9.9 
+##  17 133 
+## 
+## $Sepal.Width
+## 
+##   9 9.9 
+##  28 122 
+## 
+## $Petal.Length
+## 
+##   9 9.9 
+##  13 137 
+## 
+## $Petal.Width
+## 
+##   9 9.9 
+##  13 137 
+## 
+## $Species
+## 
+##     aaaaaa  aaaaaaaaa aaaaaaaaaa 
+##         50         50         50
 ```

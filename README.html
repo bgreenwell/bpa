@@ -63,8 +63,8 @@ img {
 
 <div id="bpa-basic-pattern-analysis-in-r" class="section level1">
 <h1>bpa: Basic Pattern Analysis in R</h1>
-<div id="example" class="section level2">
-<h2>Example</h2>
+<div id="example-iris-data" class="section level2">
+<h2>Example: iris data</h2>
 <pre class="r"><code># Load package
 library(bpa)
 
@@ -79,9 +79,41 @@ iris %&gt;%
 ## 4          9.9         9.9          9.9         9.9  aaaaaa
 ## 5            9         9.9          9.9         9.9  aaaaaa
 ## 6          9.9         9.9          9.9         9.9  aaaaaa</code></pre>
-<pre class="r"><code># All unique patterns (returns a list)
+<pre class="r"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          9.9         9.9          9.9         9.9  aaaaaa
+## 2          9.9           9          9.9         9.9  aaaaaa
+## 3          9.9         9.9          9.9         9.9  aaaaaa
+## 4          9.9         9.9          9.9         9.9  aaaaaa
+## 5            9         9.9          9.9         9.9  aaaaaa
+## 6          9.9         9.9          9.9         9.9  aaaaaa
+
+# All unique patterns (returns a list)
 basic_pattern_analysis(iris, unique_only = TRUE)</code></pre>
 <pre><code>## $Sepal.Length
+## 
+##   9 9.9 
+##  17 133 
+## 
+## $Sepal.Width
+## 
+##   9 9.9 
+##  28 122 
+## 
+## $Petal.Length
+## 
+##   9 9.9 
+##  13 137 
+## 
+## $Petal.Width
+## 
+##   9 9.9 
+##  13 137 
+## 
+## $Species
+## 
+##     aaaaaa  aaaaaaaaa aaaaaaaaaa 
+##         50         50         50</code></pre>
+<pre class="r"><code>## $Sepal.Length
 ## 
 ##   9 9.9 
 ##  17 133 
