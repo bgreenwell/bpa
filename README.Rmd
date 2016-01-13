@@ -54,7 +54,7 @@ library(bpa)
 # Look at patterns of first six observations (returns a data frame by default)
 iris %>%
   head %>%
-  basic_pattern_analysis
+  basic_pattern_analysis  # or just use pa for short
 
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          9.9         9.9          9.9         9.9  aaaaaa
