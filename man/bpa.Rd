@@ -4,21 +4,27 @@
 \alias{basic_pattern_analysis}
 \alias{basic_pattern_analysis.data.frame}
 \alias{basic_pattern_analysis.default}
+\alias{bpa}
 \title{Basic Pattern Analysis}
 \usage{
-basic_pattern_analysis(x, unique_only = FALSE, show_whitespace = FALSE)
+basic_pattern_analysis(x, unique_only = FALSE, show_whitespace = TRUE)
 
 \method{basic_pattern_analysis}{default}(x, unique_only = FALSE,
-  show_whitespace = FALSE)
+  show_whitespace = TRUE)
 
 \method{basic_pattern_analysis}{data.frame}(x, unique_only = FALSE,
-  show_whitespace = FALSE, ...)
+  show_whitespace = TRUE, ...)
+
+bpa(x, ...)
 }
 \arguments{
 \item{x}{A data frame or character vector.}
 
-\item{unique_only}{Logical indicating wether or not to only show the unique
-patterns. Default is \code{FALSE}.}
+\item{unique_only}{Logical indicating whether or not to only show the unique
+patterns. Default is \code{TRUE}.}
+
+\item{show_whitespace}{Logical indicating whether or not to show whitespace
+as a \code{"w"} character. Default is \code{TRUE}.}
 
 \item{...}{Additional optional arguments to be passed onto \code{llply}.}
 }

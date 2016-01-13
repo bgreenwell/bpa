@@ -82,12 +82,12 @@ print(dates)</code></pre>
 ## [6] &quot;1915-01-01&quot;</code></pre>
 <p>We can easily extract the unique patterns:</p>
 <pre class="r"><code>patterns &lt;- bpa:::get_pattern(dates)
-unique(patterns)</code></pre>
+unique(patterns)  # only display the unique patterns</code></pre>
 <pre><code>## [1] &quot;9999-99-99&quot;</code></pre>
 <pre class="r"><code>## [1] &quot;9999-99-99&quot;</code></pre>
-<p>However, suppose the dates are entered in multiple formats (perhaps the data arose from the merger of two data bases):</p>
-<pre class="r"><code>dates[3] &lt;- &quot;01/01/1912&quot;
-dates[5] &lt;- &quot;01/01/1914&quot;
+<p>All dates appear to have the same format. However, suppose the dates are entered in multiple formats (perhaps the data arose from the merger of two data bases, each using a different date format):</p>
+<pre class="r"><code>dates[3] &lt;- &quot;01/01/1912&quot;  # change the third date format
+dates[5] &lt;- &quot;01/01/1914&quot;  # change the fifth date format
 print(dates)</code></pre>
 <pre><code>## [1] &quot;1910-01-01&quot; &quot;1911-01-01&quot; &quot;1-01-19&quot;    &quot;1913-01-01&quot; &quot;1-01-19&quot;   
 ## [6] &quot;1915-01-01&quot;</code></pre>
@@ -95,10 +95,10 @@ print(dates)</code></pre>
 ## [6] &quot;1915-01-01&quot;</code></pre>
 <p>We can easily detect such problems:</p>
 <pre class="r"><code>patterns &lt;- bpa:::get_pattern(dates)
-unique(patterns)</code></pre>
+unique(patterns)  # only display the unique patterns</code></pre>
 <pre><code>## [1] &quot;9999-99-99&quot; &quot;9-99-99&quot;</code></pre>
 <pre class="r"><code>## [1] &quot;9999-99-99&quot; &quot;9-99-99&quot;</code></pre>
-<p>Notice that all the digits are represented by the character <code>9</code>. Similarly, all lowercase/uppercase letters are represented by the character <code>a</code>/<code>A</code>. Everything else (e.g. @, #, &amp;, etc.) remain the same. The only exception is whitespace characters which are represented as <code>w</code> if <code>show_whitespace = TRUE</code>.</p>
+<p>Notice that all the digits are represented by the character <code>9</code>. Similarly, all lowercase/uppercase letters are represented by the character <code>a</code>/<code>A</code>. Everything else (e.g. -, @, #, etc.) remain the same. The only exception is whitespace characters which are represented as <code>w</code> if <code>show_whitespace = TRUE</code>.</p>
 <p>The function <code>basic_pattern_analysis</code> applies this function to each column of a data frame and, by default, returns a <code>&quot;dataframe&quot;</code> object. This function is especially useful when working with voluminous, messy, and unfamiliar data sets. The following code exemplifies this.</p>
 <pre class="r"><code># Load package
 library(bpa)
@@ -122,8 +122,8 @@ iris %&gt;%
 ## 5            9         9.9          9.9         9.9  aaaaaa
 ## 6          9.9         9.9          9.9         9.9  aaaaaa
 
-# All unique patterns (returns a list)
-basic_pattern_analysis(iris, unique_only = TRUE)</code></pre>
+# All unique patterns (returns a list) -- bpa is an alias for basic_pattern_analysis
+bpa(iris, unique_only = TRUE)</code></pre>
 <pre><code>## $Sepal.Length
 ## 
 ##   9 9.9 

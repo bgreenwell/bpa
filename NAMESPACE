@@ -2,7 +2,11 @@
 
 S3method(basic_pattern_analysis,data.frame)
 S3method(basic_pattern_analysis,default)
+S3method(trim_ws,data.frame)
+S3method(trim_ws,default)
 export("%>%")
 export(basic_pattern_analysis)
+export(bpa)
+export(trim_ws)
 importFrom(magrittr,"%>%")
 importFrom(plyr,llply)

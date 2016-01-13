@@ -9,7 +9,8 @@ Description: Basic pattern analysis.
 Depends:
     base
 Imports:
-    magrittr
+    magrittr,
+    plyr
 Suggests:
     testthat
 License: GPL (>= 2)
