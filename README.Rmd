@@ -1,5 +1,8 @@
 # bpa: Basic Pattern Analysis in R
 
+[![Build Status](https://travis-ci.org/bgreenwell/bpa.svg?branch=master)](https://travis-ci.org/bgreenwell/bpa)
+[![Coverage Status](https://img.shields.io/codecov/c/github/bgreenwell/bpa.svg)](https://codecov.io/github/bgreenwell/bpa?branch=master)
+
 Package `bpa`, through the function `basic_pattern_analysis`, allows the analyst to easily identify weird or unexpected data points. For example, multiple date formats or other typos.
 
 ## Installation
