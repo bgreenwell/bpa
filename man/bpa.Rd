@@ -7,13 +7,14 @@
 \alias{bpa}
 \title{Basic Pattern Analysis}
 \usage{
-basic_pattern_analysis(x, unique_only = FALSE, show_whitespace = TRUE)
+basic_pattern_analysis(x, unique_only = FALSE, show_whitespace = TRUE,
+  useNA = c("no", "ifany", "always"), ...)
 
 \method{basic_pattern_analysis}{default}(x, unique_only = FALSE,
-  show_whitespace = TRUE)
+  show_whitespace = TRUE, useNA = c("no", "ifany", "always"))
 
 \method{basic_pattern_analysis}{data.frame}(x, unique_only = FALSE,
-  show_whitespace = TRUE, ...)
+  show_whitespace = TRUE, useNA = c("no", "ifany", "always"), ...)
 
 bpa(x, ...)
 }
@@ -25,6 +26,9 @@ patterns. Default is \code{TRUE}.}
 
 \item{show_whitespace}{Logical indicating whether or not to show whitespace
 as a \code{"w"} character. Default is \code{TRUE}.}
+
+\item{useNA}{Logical indicating whether to include \code{NA} values in the
+table. See \code{\link{table}} for details.}
 
 \item{...}{Additional optional arguments to be passed onto \code{llply}.}
 }
