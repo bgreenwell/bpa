@@ -6,7 +6,7 @@ get_pattern <- function(x, show_ws = TRUE) {
   x <- gsub("[a-z]", "a", x)
   x <- gsub("[A-Z]", "A", x)
   x <- gsub("[0-9]", "9", x)
-  if (show_whitespace) {
+  if (show_ws) {
     x <- gsub("\\s", "w", x)
   }
   x
