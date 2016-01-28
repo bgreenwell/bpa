@@ -1,5 +1,5 @@
 #' @keywords internal
-get_pattern <- function(x, show_whitespace = TRUE) {
+get_pattern <- function(x, show_ws = TRUE) {
   if (!is.character(x)) {
     x <- as.character(x)
   }
@@ -19,7 +19,7 @@ get_pattern <- function(x, show_whitespace = TRUE) {
 #' @param x A data frame or character vector.
 #' @param unique_only Logical indicating whether or not to only show the unique
 #'   patterns. Default is \code{TRUE}.
-#' @param show_whitespace Logical indicating whether or not to show whitespace
+#' @param show_ws Logical indicating whether or not to show whitespace
 #'   as a \code{"w"} character. Default is \code{TRUE}.
 #' @param useNA Logical indicating whether to include \code{NA} values in the
 #'   table. See \code{\link{table}} for details.
@@ -30,7 +30,7 @@ get_pattern <- function(x, show_whitespace = TRUE) {
 #' basic_pattern_analysis(iris)
 #' basic_pattern_analysis(iris, unique_only = TRUE)
 basic_pattern_analysis <- function(x, unique_only = FALSE,
-                                   show_whitespace = TRUE,
+                                   show_ws = TRUE,
                                    useNA = c("no", "ifany", "always"), ...) {
   UseMethod("basic_pattern_analysis")
 }
@@ -39,13 +39,13 @@ basic_pattern_analysis <- function(x, unique_only = FALSE,
 #' @rdname bpa
 #' @export
 basic_pattern_analysis.default <- function(x, unique_only = FALSE,
-                                           show_whitespace = TRUE,
+                                           show_ws = TRUE,
                                            useNA = c("no", "ifany", "always")) {
   useNA <- match.arg(useNA)
   if (unique_only) {
-    table(get_pattern(x, show_whitespace = show_whitespace), useNA = useNA)
+    table(get_pattern(x, show_ws = show_ws), useNA = useNA)
   } else {
-    get_pattern(x, show_whitespace = show_whitespace)
+    get_pattern(x, show_ws = show_ws)
   }
 }
 
@@ -54,12 +54,12 @@ basic_pattern_analysis.default <- function(x, unique_only = FALSE,
 #' @importFrom plyr llply
 #' @export
 basic_pattern_analysis.data.frame <- function(x, unique_only = FALSE,
-                                              show_whitespace = TRUE,
+                                              show_ws = TRUE,
                                               useNA = c("no", "ifany", "always"),
                                               ...) {
   useNA <- match.arg(useNA)
   z <- llply(x, basic_pattern_analysis.default, unique_only = unique_only,
-             show_whitespace = show_whitespace, useNA = useNA, ...)
+             show_ws = show_ws, useNA = useNA, ...)
   if (unique_only) {
     z
   } else {
