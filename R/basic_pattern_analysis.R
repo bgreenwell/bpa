@@ -40,7 +40,8 @@ basic_pattern_analysis <- function(x, unique_only = FALSE,
 #' @export
 basic_pattern_analysis.default <- function(x, unique_only = FALSE,
                                            show_ws = TRUE,
-                                           useNA = c("no", "ifany", "always")) {
+                                           useNA = c("no", "ifany", "always"),
+                                           ...) {
   useNA <- match.arg(useNA)
   if (unique_only) {
     table(get_pattern(x, show_ws = show_ws), useNA = useNA)

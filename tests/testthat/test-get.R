@@ -2,8 +2,8 @@ context("internal functions")
 
 test_that("get_pattern works properly", {
   x <- c(" 12-Ac$&abnd abn", "Male", "01/01/1999", 3.1415)
-  pat1 <- bpa:::get_pattern(x, show_whitespace = FALSE)
-  pat2 <- bpa:::get_pattern(x, show_whitespace = TRUE)
+  pat1 <- bpa:::get_pattern(x, show_ws = FALSE)
+  pat2 <- bpa:::get_pattern(x, show_ws = TRUE)
   expect_identical(pat1, c(" 99-Aa$&aaaa aaa", "Aaaa", "99/99/9999", "9.9999"))
   expect_identical(pat2, c("w99-Aa$&aaaawaaa", "Aaaa", "99/99/9999", "9.9999"))
 })
