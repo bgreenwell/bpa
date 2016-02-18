@@ -5,7 +5,7 @@ Version: 0.1
 Date: 2016-01-11
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com",
   role = c("aut", "cre"))
-Description: Basic pattern analysis.
+Description: Run pattern analysis on character sets, digits, or combined input with both characters and numeric digits.
 Depends:
     base
 Imports:
