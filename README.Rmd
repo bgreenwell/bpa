@@ -50,9 +50,10 @@ Notice that all the digits are represented by the character `9`. Similarly, all 
  remain the same. The only exception are whitespace characters which are represented as `w` (by default) if `show_ws = TRUE`. This can be changed to any character string using the `ws_char` option. For example,
 ```{r}
 bpa:::get_pattern("(123) 456-789")
-bpa:::get_pattern("(123) 456-789", ws_char = " ")
 
 ## [1] "(999)w999-9999"
+
+bpa:::get_pattern("(123) 456-789", ws_char = " ")
 
 ## [1] "(999) 999-9999"
 ```
