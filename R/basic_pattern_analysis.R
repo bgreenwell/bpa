@@ -22,7 +22,7 @@ get_pattern <- function(x, show_ws = TRUE, ws_char = "w") {
 #' @param show_ws Logical indicating whether or not to show whitespace
 #'   using a special character. Default is \code{TRUE}.
 #' @param ws_char Character string to use to depict whitespace when 
-#'   \code{show_ws = TRUE}
+#'   \code{show_ws = TRUE}.
 #' @param useNA Logical indicating whether to include \code{NA} values in the
 #'   table. See \code{\link{table}} for details.
 #' @param ... Additional optional arguments to be passed onto \code{llply}.
