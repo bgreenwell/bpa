@@ -13,5 +13,6 @@
 #' @format A data frame with 1000 rows and 3 variables
 #' @name messy
 #' @examples
+#' data(messy)
 #' bpa(messy, unique_only = TRUE, ws_char = " ")
 NULL

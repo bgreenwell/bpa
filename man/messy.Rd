@@ -17,6 +17,7 @@ pattern analysis.
 }
 }
 \examples{
+data(messy)
 bpa(messy, unique_only = TRUE, ws_char = " ")
 }
 \keyword{datasets}
