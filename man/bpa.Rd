@@ -8,13 +8,13 @@
 \title{Basic Pattern Analysis}
 \usage{
 basic_pattern_analysis(x, unique_only = FALSE, show_ws = TRUE,
-  useNA = c("no", "ifany", "always"), ...)
+  ws_char = "w", useNA = c("no", "ifany", "always"), ...)
 
 \method{basic_pattern_analysis}{default}(x, unique_only = FALSE,
-  show_ws = TRUE, useNA = c("no", "ifany", "always"), ...)
+  show_ws = TRUE, ws_char = "w", useNA = c("no", "ifany", "always"), ...)
 
 \method{basic_pattern_analysis}{data.frame}(x, unique_only = FALSE,
-  show_ws = TRUE, useNA = c("no", "ifany", "always"), ...)
+  show_ws = TRUE, ws_char = "w", useNA = c("no", "ifany", "always"), ...)
 
 bpa(x, ...)
 }
@@ -25,7 +25,10 @@ bpa(x, ...)
 patterns. Default is \code{TRUE}.}
 
 \item{show_ws}{Logical indicating whether or not to show whitespace
-as a \code{"w"} character. Default is \code{TRUE}.}
+using a special character. Default is \code{TRUE}.}
+
+\item{ws_char}{Character string to use to depict whitespace when 
+\code{show_ws = TRUE}.}
 
 \item{useNA}{Logical indicating whether to include \code{NA} values in the
 table. See \code{\link{table}} for details.}
