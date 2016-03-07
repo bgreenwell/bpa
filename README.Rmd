@@ -44,7 +44,7 @@ get_pattern("(123)  456-789", show_ws = FALSE)  # same as ws_char = " "
 get_pattern("(123)  456-789", ws_char = "<ws>")
 ```
  
-The function `basic_pattern_analysis` applies `get_pattern` to each column of a data frame and, by default, returns a `"dataframe"` object. This function is especially useful when working with voluminous, messy, and unfamiliar data sets. The following code exemplifies this by highlighting potential issues in the entire data set (e.g., some phone numbers contain parentheses around the area code while other do not).
+The function `basic_pattern_analysis` applies `get_pattern` to each column of a data frame and, by default, returns a `"dataframe"` object. This function is especially useful when working with big, messy, and unfamiliar data sets. The following code exemplifies this by highlighting potential issues in the entire data set (e.g., some phone numbers contain parentheses around the area code while other do not).
 ```{r}
 # Look at patterns of first six observations (returns a data frame by default)
 messy %>%
