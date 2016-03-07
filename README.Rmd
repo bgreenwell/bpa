@@ -23,7 +23,7 @@ For illustration, this package comes with a simulated data set containing 1000 o
 
 ```{r}
 # Load the package
-library(bpa)
+library(bpa)  # pipe operator %>% included for convenience
 
 # Load the data
 data(messy, package = "bpa")
