@@ -54,6 +54,6 @@ messy %>%
 # All unique patterns (returns a list) -- bpa is an alias for basic_pattern_analysis
 bpa(messy, unique_only = TRUE)
 
-# Extract Gender values matching a specific pattern
+# Extract Gender values matching the pattern "Aaaa"
 # match_pattern(messy$Gender, pattern = "Aaaa", unique_only = TRUE)
 ```
