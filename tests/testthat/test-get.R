@@ -44,7 +44,7 @@ test_that("basic_pattern_analysis and bpa work properly", {
 test_that("match_pattern works properly", {
   phone <- c("123-456-7890", "456-7890", "123-4567", "456-7890")
   mp1 <- match_pattern(phone, pattern = "999-9999")
-  mp2 <- match_pattern(phone, pattern = "999-9999", unique_only = TRUE
+  mp2 <- match_pattern(phone, pattern = "999-9999", unique_only = TRUE)
   expect_equal(mp1, c("456-7890", "123-4567", "456-7890"))
   expect_equal(mp2, c("456-7890", "123-4567"))
 })
