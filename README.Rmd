@@ -30,18 +30,18 @@ data(messy, package = "bpa")
 head(messy)
 ```
 
-The most basic function is `get_pattern`, which is not exported so one must use `bpa:::get_pattern`. This function is used internally to extract patterns from a vector of data. For example, consider `Date` column. We can easily extract the unique patterns:
+The most basic function is `get_pattern`. This function is used internally to extract patterns from a vector of data. For example, consider `Date` column. We can easily extract the unique patterns:
 ```{r}
-patterns <- bpa:::get_pattern(messy$Date)
+patterns <- get_pattern(messy$Date)
 patterns %>% table %>% as.data.frame  # frequency of each pattern
 ```
 It appears as though the `Date` column contains four different date formats -- which is a problem since `R` requires dates to have a standard unambiguous format. Perhaps the data were entered in by different people, or the data are the result of a merge from multiple sources? Nonetheless, now that we have identified a problem, we can easily correct it by converting to a single standard date format.
 
 Notice that all the digits are represented by the character `9`. Similarly, all lowercase/uppercase letters are represented by the character `a`/`A`. Everything else (e.g. -, @, #, etc.) remains the same. The only exception are whitespace characters which are represented as `w` (by default) if `show_ws = TRUE`. This can be changed to any character string using the `ws_char` option. For example,
 ```{r}
-bpa:::get_pattern("(123)  456-789")
-bpa:::get_pattern("(123)  456-789", show_ws = FALSE)  # same as ws_char = " "
-bpa:::get_pattern("(123)  456-789", ws_char = "<ws>")
+get_pattern("(123)  456-789")
+get_pattern("(123)  456-789", show_ws = FALSE)  # same as ws_char = " "
+get_pattern("(123)  456-789", ws_char = "<ws>")
 ```
  
 The function `basic_pattern_analysis` applies `get_pattern` to each column of a data frame and, by default, returns a `"dataframe"` object. This function is especially useful when working with voluminous, messy, and unfamiliar data sets. The following code exemplifies this by highlighting potential issues in the entire data set (e.g., some phone numbers contain parentheses around the area code while other do not).
@@ -55,5 +55,5 @@ messy %>%
 bpa(messy, unique_only = TRUE)
 
 # Extract Gender values matching a specific pattern
-# match_pattern(messy$Gender, pattern = "^Aaaa$", unique_only = TRUE)
+# match_pattern(messy$Gender, pattern = "Aaaa", unique_only = TRUE)
 ```
