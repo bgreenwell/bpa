@@ -1,4 +1,5 @@
-#' @keywords internal
+#' @rdname bpa
+#' @export
 get_pattern <- function(x, show_ws = TRUE, ws_char = "w") {
   if (!is.character(x)) {
     x <- as.character(x)
