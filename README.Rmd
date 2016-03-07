@@ -30,10 +30,12 @@ data(messy, package = "bpa")
 head(messy)
 ```
 
-The most basic function is `get_pattern`. This function is used internally to extract patterns from a vector of data. For example, consider `Date` column. We can easily extract the unique patterns:
+The most basic function is `get_pattern`. This function is used internally to extract patterns from a vector of data. For example, consider the `Date` column. We can easily extract the unique patterns and there corresponding frequencies:
 ```{r}
-patterns <- get_pattern(messy$Date)
-patterns %>% table %>% as.data.frame  # frequency of each pattern
+messy$Date %>%
+  get_pattern %>%  # extract patterns
+  table %>%        # tabulate frequencies
+  as.data.frame    # display as a data frame
 ```
 It appears as though the `Date` column contains four different date formats -- which is a problem since `R` requires dates to have a standard unambiguous format. Perhaps the data were entered in by different people, or the data are the result of a merge from multiple sources? Nonetheless, now that we have identified a problem, we can easily correct it by converting to a single standard date format.
 
