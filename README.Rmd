@@ -48,7 +48,7 @@ The function `basic_pattern_analysis` applies `get_pattern` to each column of a 
 ```{r}
 # Look at patterns of first six observations (returns a data frame by default)
 messy %>%
-  head %>%
+  slice(1:10) %>%         # first 10 observations
   basic_pattern_analysis  # you can also use bpa for short
 
 # All unique patterns (returns a list) -- bpa is an alias for basic_pattern_analysis
