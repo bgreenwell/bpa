@@ -28,6 +28,14 @@ library(bpa)  # pipe operator %>% included for convenience
 # Load the data
 data(messy, package = "bpa")
 head(messy)
+
+##   Gender             Date         Phone
+## 1 Female        16Aug2001   571 972 510
+## 2   Male       2009-08-21   090 875 285
+## 3      M       01/22/2004 (079)-200-150
+## 4   male       09/02/2008 (129)-006-808
+## 5   Male February 19 2006   016 651 851
+## 6 Female        16Nov2015 (492)-455-108
 ```
 
 The most basic function is `get_pattern`. This function is used internally to extract patterns from a vector of data. For example, consider the `Date` column. We can easily extract the unique patterns and there corresponding frequencies:
@@ -36,14 +44,38 @@ messy$Date %>%
   get_pattern %>%  # extract patterns
   table %>%        # tabulate frequencies
   as.data.frame    # display as a data frame
+
+##                    . Freq
+## 1         99/99/9999  259
+## 2         9999-99-99  262
+## 3          99Aaa9999  241
+## 4  Aaaaaaaaaw99w9999   19
+## 5   Aaaaaaaaw99w9999   56
+## 6    Aaaaaaaw99w9999   45
+## 7     Aaaaaaw99w9999   24
+## 8      Aaaaaw99w9999   36
+## 9       Aaaaw99w9999   42
+## 10       Aaaw99w9999   16
 ```
 It appears as though the `Date` column contains four different date formats -- which is a problem since `R` requires dates to have a standard unambiguous format. Perhaps the data were entered in by different people, or the data are the result of a merge from multiple sources? Nonetheless, now that we have identified a problem, we can easily correct it by converting to a single standard date format.
 
 Notice that all the digits are represented by the character `9`. Similarly, all lowercase/uppercase letters are represented by the character `a`/`A`. Everything else (e.g. -, @, #, etc.) remains the same. The only exception are whitespace characters which are represented as `w` (by default) if `show_ws = TRUE`. This can be changed to any character string using the `ws_char` option. For example,
 ```{r}
 get_pattern("(123)  456-789")
+
+## [1] "(999)ww999-999"
+```
+
+```{r}
 get_pattern("(123)  456-789", show_ws = FALSE)  # same as ws_char = " "
+
+## [1] "(999)  999-999"
+```
+
+```{r}
 get_pattern("(123)  456-789", ws_char = "<ws>")
+
+## [1] "(999)<ws><ws>999-999"
 ```
  
 The function `basic_pattern_analysis` applies `get_pattern` to each column of a data frame and, by default, returns a `"dataframe"` object. This function is especially useful when working with big, messy, and unfamiliar data sets. The following code exemplifies this by highlighting potential issues in the entire data set (e.g., some phone numbers contain parentheses around the area code while other do not).
@@ -52,9 +84,43 @@ The function `basic_pattern_analysis` applies `get_pattern` to each column of a 
 messy[1:10, ] %>%         # only look at first 10 observations
   basic_pattern_analysis  # note: you can also use bpa for short
 
+##    Gender             Date         Phone
+## 1  Aaaaaa        99Aaa9999   999w999w999
+## 2    Aaaa       9999-99-99   999w999w999
+## 3       A       99/99/9999 (999)-999-999
+## 4    aaaa       99/99/9999 (999)-999-999
+## 5    Aaaa Aaaaaaaaw99w9999   999w999w999
+## 6  Aaaaaa        99Aaa9999 (999)-999-999
+## 7  Aaaaaa       9999-99-99 (999)w999w999
+## 8  Aaaaaa        99Aaa9999   999-999-999
+## 9    aaaa Aaaaaaaaw99w9999   999w999w999
+## 10 Aaaaaa       9999-99-99   999-999-999
+
 # All unique patterns (returns a list) -- bpa is an alias for basic_pattern_analysis
 bpa(messy, unique_only = TRUE)
 
+## $Gender
+## 
+##      A   aaaa   Aaaa aaaaaa Aaaaaa 
+##    189    110    312     98    291 
+## 
+## $Date
+## 
+##        99/99/9999        9999-99-99         99Aaa9999 Aaaaaaaaaw99w9999 
+##               259               262               241                19 
+##  Aaaaaaaaw99w9999   Aaaaaaaw99w9999    Aaaaaaw99w9999     Aaaaaw99w9999 
+##                56                45                24                36 
+##      Aaaaw99w9999       Aaaw99w9999 
+##                42                16 
+## 
+## $Phone
+## 
+## (999)-999-999   999-999-999   999w999w999 (999)w999w999 
+##           242           276           232           250
+
 # Extract Gender values matching the pattern "Aaaa"
-# match_pattern(messy$Gender, pattern = "Aaaa", unique_only = TRUE)
+match_pattern(messy$Gender, pattern = "Aaaa", unique_only = TRUE)
+
+## [1] Male
+## Levels: F female Female M male Male
 ```
