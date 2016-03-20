@@ -189,7 +189,7 @@ head(messy)</code></pre>
 <pre><code>## [1] &quot;(999)&lt;ws&gt;&lt;ws&gt;999-999&quot;</code></pre>
 <pre class="r"><code>## [1] &quot;(999)&lt;ws&gt;&lt;ws&gt;999-999&quot;</code></pre>
 <p>The function <code>basic_pattern_analysis</code> applies <code>get_pattern</code> to each column of a data frame and, by default, returns a <code>&quot;dataframe&quot;</code> object. This function is especially useful when working with big, messy, and unfamiliar data sets. The following code exemplifies this by highlighting potential issues in the entire data set (e.g., some phone numbers contain parentheses around the area code while other do not).</p>
-<pre class="r"><code># Look at patterns of first six observations (returns a data frame by default)
+<pre class="r"><code># Look at patterns of first ten observations (returns a data frame by default)
 messy[1:10, ] %&gt;%         # only look at first 10 observations
   basic_pattern_analysis  # note: you can also use bpa for short</code></pre>
 <pre><code>##    Gender             Date         Phone
@@ -257,6 +257,8 @@ bpa(messy, unique_only = TRUE)</code></pre>
 # Extract Gender values matching the pattern &quot;Aaaa&quot;
 match_pattern(messy$Gender, pattern = &quot;Aaaa&quot;, unique_only = TRUE)</code></pre>
 <pre><code>## [1] Male
+## Levels: F female Female M male Male</code></pre>
+<pre class="r"><code>## [1] Male
 ## Levels: F female Female M male Male</code></pre>
 </div>
 </div>
