@@ -1,10 +1,11 @@
-#' Trim Leading and Trailing Whitespace
+#' Remove Leading/Trailing Whitespace
 #'
-#' \code{trim_ws} trims leading and trailing whitespace from data.
+#' Remove leading and/or trailing whitespace from character strings.
 #'
 #' @param x A data frame or vector.
-#' @param ... Additional optional arguments to be passed onto
-#'   \code{\link{trimws}}.
+#' @param which A character string specifying whether to remove both leading and 
+#'   trailing whitespace (default), or only leading (\code{"left"}) or trailing 
+#'   (\code{"right"}). Can be abbreviated.
 #' @export
 #' @examples
 #' # Toy example
@@ -20,8 +21,16 @@ trim_ws <- function(x, ...) {
 
 
 #' @export
-trim_ws.default <- function(x, ...) {
-  trimws(x, ...)
+trim_ws.default <- function(x, which = c("both", "left", "right")) {
+  # trimws(x, ...)
+  .which <- match.arg(which)
+  if (.which == "both") {
+    gsub("(^\\s+)|(\\s+$)", "", x)
+  } else if (.which == "left") {
+    gsub("(^\\s+)", "", x)
+  } else {
+    gsub("(\\s+$)", "", x)
+  }
 }
 
 
