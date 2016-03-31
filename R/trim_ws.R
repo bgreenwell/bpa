@@ -25,11 +25,11 @@ trim_ws.default <- function(x, which = c("both", "left", "right")) {
   # trimws(x, ...)
   .which <- match.arg(which)
   if (.which == "both") {
-    gsub("(^\\s+)|(\\s+$)", "", x)
+    sub("(^\\s+)|(\\s+$)", "", x)
   } else if (.which == "left") {
-    gsub("(^\\s+)", "", x)
+    sub("(^\\s+)", "", x)
   } else {
-    gsub("(\\s+$)", "", x)
+    sub("(\\s+$)", "", x)
   }
 }
 
