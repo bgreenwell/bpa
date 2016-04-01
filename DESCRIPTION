@@ -2,10 +2,13 @@ Package: bpa
 Type: Package
 Title: Basic Pattern Analysis
 Version: 0.1
-Date: 2016-01-11
+Date: 2016-03-30
 Authors@R: person("Brandon", "Greenwell", email = "greenwell.brandon@gmail.com",
   role = c("aut", "cre"))
-Description: Run pattern analysis on character sets, digits, or combined input with both characters and numeric digits.
+Description: Run basic pattern analyses on character sets, digits, or combined
+    input containing both characters and numeric digits. Useful for data
+    cleaning and for identifying columns containing multiple or nonstandard
+    formats.
 Depends:
     base
 Imports:

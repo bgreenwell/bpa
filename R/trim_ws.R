@@ -3,8 +3,8 @@
 #' Remove leading and/or trailing whitespace from character strings.
 #'
 #' @param x A data frame or vector.
-#' @param which A character string specifying whether to remove both leading and 
-#'   trailing whitespace (default), or only leading (\code{"left"}) or trailing 
+#' @param which A character string specifying whether to remove both leading and
+#'   trailing whitespace (default), or only leading (\code{"left"}) or trailing
 #'   (\code{"right"}). Can be abbreviated.
 #' @export
 #' @examples
@@ -25,11 +25,11 @@ trim_ws.default <- function(x, which = c("both", "left", "right")) {
   # trimws(x, ...)
   .which <- match.arg(which)
   if (.which == "both") {
-    sub("(^\\s+)|(\\s+$)", "", x)
+    gsub("(^\\s+)|(\\s+$)", "", x)
   } else if (.which == "left") {
-    sub("(^\\s+)", "", x)
+    gsub("(^\\s+)", "", x)
   } else {
-    sub("(\\s+$)", "", x)
+    gsub("(\\s+$)", "", x)
   }
 }
 

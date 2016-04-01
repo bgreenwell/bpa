@@ -121,6 +121,5 @@ bpa(messy, unique_only = TRUE)
 # Extract Gender values matching the pattern "Aaaa"
 match_pattern(messy$Gender, pattern = "Aaaa", unique_only = TRUE)
 
-## [1] Male
-## Levels: F female Female M male Male
+## [1] "Male"
 ```

@@ -2,18 +2,19 @@
 % Please edit documentation in R/trim_ws.R
 \name{trim_ws}
 \alias{trim_ws}
-\title{Trim Leading and Trailing Whitespace}
+\title{Remove Leading/Trailing Whitespace}
 \usage{
 trim_ws(x, ...)
 }
 \arguments{
 \item{x}{A data frame or vector.}
 
-\item{...}{Additional optional arguments to be passed onto
-\code{\link{trimws}}.}
+\item{which}{A character string specifying whether to remove both leading and
+trailing whitespace (default), or only leading (\code{"left"}) or trailing
+(\code{"right"}). Can be abbreviated.}
 }
 \description{
-\code{trim_ws} trims leading and trailing whitespace from data.
+Remove leading and/or trailing whitespace from character strings.
 }
 \examples{
 # Toy example
