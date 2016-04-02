@@ -15,7 +15,7 @@
 #' print(d)  # print data as is
 #' trim_ws(d)  # print data with whitespace trimmed off
 #' sapply(trim_ws(d), class)  # check that column types are preserved
-trim_ws <- function(x, ...) {
+trim_ws <- function(x, which = c("both", "left", "right")) {
   UseMethod("trim_ws")
 }
 
@@ -35,8 +35,9 @@ trim_ws.default <- function(x, which = c("both", "left", "right")) {
 
 
 #' @export
-trim_ws.data.frame <- function(x, ...) {
+trim_ws.data.frame <- function(x, which = c("both", "left", "right")) {
+  .which <- match.arg(which)
   as.data.frame(lapply(x, function(y) {
-    if (is.numeric(y)) y else trim_ws(y, ...)
+    if (is.numeric(y)) y else trim_ws(y, which = .which)
   }), stringsAsFactors = FALSE)
 }

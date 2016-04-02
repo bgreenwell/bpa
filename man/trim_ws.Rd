@@ -4,7 +4,7 @@
 \alias{trim_ws}
 \title{Remove Leading/Trailing Whitespace}
 \usage{
-trim_ws(x, ...)
+trim_ws(x, which = c("both", "left", "right"))
 }
 \arguments{
 \item{x}{A data frame or vector.}
