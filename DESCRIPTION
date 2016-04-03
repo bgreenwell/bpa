@@ -15,8 +15,11 @@ Imports:
     magrittr,
     plyr
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 License: GPL (>= 2)
 URL: https://github.com/bgreenwell/bpa
 BugReports: https://github.com/bgreenwell/bpa/issues
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr

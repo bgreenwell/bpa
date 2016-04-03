@@ -1,0 +1,80 @@
+---
+title: "A Guide to Basic Pattern Analysis in R"
+author: "Brandon M. Greenwell"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A Guide to Basic Pattern Analysis in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## What is basic pattern analysis?
+
+Basic pattern analysis, as implemented in the R package `bpa`, is a data pre-processing tool and is designed to help reduce the time spent doing various pre-processing tasks. It takes inspiration from some of the functionality of [SAS/DataFlux Data Management Studio](https://support.sas.com/documentation/onlinedoc/dfdmstudio/). More specifically, the functions in `bpa` help standardize the data so that multiple formatting issues, typos, and other unexpected outcomes can more easily be identified in unfamiliar and/or large amounts of data.
+
+## What is the `bpa` package?
+
+Package `bpa`, through the function `basic_pattern_analysis`, allows the analyst to run basic pattern analyses on character sets, digits, or combined input containing both characters and numeric digits. It is useful for data cleaning and for identifying columns containing multiple or nonstandard formats.
+
+For illustration, this package comes with a simulated data set containing 1000 observations on three variables:
+
+  1. `Gender` - Gender of subject.
+  2. `Date` - Date of observation.
+  3. `Phone` - Subject's phone number.
+
+The following snipped of code loads the package, sample data, and prints out the first six observations.
+```{r}
+# Load the package
+library(bpa)  # pipe operator %>% included for convenience
+
+# Load the data
+data(messy, package = "bpa")
+head(messy)
+```
+Immediately we can see that all of the variables have mixed format. For example, in the `Gender` column, a male is represented as a `Male`, `male`, or `M`. This often happens when data are input manually, or are the result from merging multiple data sources. Of course we could also just print out the unique of a column, but a variable like `Date` or `Phone` in a large data base would likely have too many unique values for this approach to be useful. Instead, the `bpa` package tries to standardize each column in a way that produces the least amount of unique value so that issues like this become more apparent.
+
+## Basic usage 
+
+The core function in `bpa` is `get_pattern`. This function is used to extract patterns from a vector of data. This function will transform the values so that all numeric digits are represented by the character `9`. Similarly, all lowercase and uppercase letters are represented by the characters `a` and `A`, respectively. Everything else (e.g., special characters like -, @, #, etc.) remains the same. The only exception are whitespace characters which are represented as `w` if `show_ws = TRUE` (by default). This can be changed to any character string using the `ws_char` option. For example,
+```{r}
+get_pattern("(123)  456-789")
+get_pattern("(123)  456-789", show_ws = FALSE)  # same as ws_char = " "
+get_pattern("(123)  456-789", ws_char = "<ws>")
+```
+
+Getting back to the example data, consider the `Date` column. We can easily extract the unique patterns and their corresponding frequencies:
+```{r}
+messy$Date %>%
+  get_pattern %>%  # extract patterns
+  table %>%        # tabulate frequencies
+  as.data.frame    # display as a data frame
+```
+It appears as though the `Date` column contains four different date formats -- which is a problem since `R` requires dates to have a standard unambiguous format. Perhaps the data were entered in by different people, or the data are the result of a merge from multiple sources? Nonetheless, now that we have identified a problem, we can easily correct it by converting to a single standard date format. On the other hand, if we just looked at the unique values of `Date` without first standardizing the data, it would have been more difficult to identify all of the formatting problems. 
+```{r}
+messy$Date %>%
+  unique %>%    # extract unique values
+  head(50)      # look at first 50 observations
+```
+Standardizing the data via basic pattern analysis provides a much cleaner representation of the data that is often more useful during the pre-processing step.
+
+The function `basic_pattern_analysis` applies `get_pattern` to each column of a data frame and, by default, returns a `"dataframe"` object of the same size. This function is especially useful when working with big, messy, and unfamiliar data sets. The following snippet of code exemplifies this by highlighting potential issues in the entire `messy` data set.
+```{r}
+# Standardize the entire data set (returns a data frame)
+messy %>%
+  basic_pattern_analysis %>%  # note: you can also use bpa for short
+  head(10)                    # only look at first 10 observations
+```
+Also, to save typing, we have included `bpa` as an alias for `basic_pattern_analysis`.
+
+With lots of data, it will often be more useful to view a list containing only the unique patterns for each column of a data frame. This can be accomplished by setting `unique_only = TRUE`.
+```{r}
+# Only return unique patterns (returns a list)
+bpa(messy, unique_only = TRUE)
+```
+
+Finally, we have included the function `match_pattern` for extracting the values of a vector that match a specified pattern. For example, the following code chunk will extract the unique values of `Gender` that match the standardized pattern `Aaaa`.
+```{r}
+# Extract Gender values matching the pattern "Aaaa"
+match_pattern(messy$Gender, pattern = "Aaaa", unique_only = TRUE)
+```
