@@ -1,5 +1,6 @@
 # bpa: Basic Pattern Analysis in R
 
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/bpa)](http://cran.r-project.org/package=bpa)
 [![Build Status](https://travis-ci.org/bgreenwell/bpa.svg?branch=master)](https://travis-ci.org/bgreenwell/bpa)
 [![Coverage Status](https://img.shields.io/codecov/c/github/bgreenwell/bpa.svg)](https://codecov.io/github/bgreenwell/bpa?branch=master)
 
