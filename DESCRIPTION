@@ -9,8 +9,6 @@ Description: Run basic pattern analyses on character sets, digits, or combined
     input containing both characters and numeric digits. Useful for data
     cleaning and for identifying columns containing multiple or nonstandard
     formats.
-Depends:
-    base
 Imports:
     magrittr,
     plyr
